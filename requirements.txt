@@ -7,5 +7,4 @@ joblib
 gradio 
 altair
 plotly
-sklearn
 logistic_regression
