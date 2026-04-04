@@ -15,13 +15,13 @@ choice = st.sidebar.radio("Projects:", [
 ])
 
 if choice == "NNIT Student Support System":
-    nnit_students_chatbot.run()
+    import nnit_students_chatbot
 
 elif choice == "Predictive Maintenance for Marine Engines":
-    predictive_maintenance_marine_engine.run()
+    import predictive_maintenance_marine_engine
 
 elif choice == "Hull Biofouling Predictor and Optimizer":
-    hull_biofouling_prediction.run()
+    import hull_biofouling_prediction
 
 elif choice == "User-Friendly Interactive Chatbot":
-    user_interactive_chatbot.run()
+    import user_interactive_chatbot
