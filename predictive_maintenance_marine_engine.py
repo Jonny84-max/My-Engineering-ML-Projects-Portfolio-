@@ -109,8 +109,8 @@ def run():
         zone, color = risk_zone(score)
 
         st.subheader(" Results")
-        st.write(f"**Maintenance Probability:** {prob:.2f}")
-        st.write(f"**Risk Zone:** :{color}[{zone}]")
+        st.write(f"Maintenance Probability: {prob:.2f}")
+        st.write(f"Risk Zone: :{color}[{zone}]")
 
     if rule_flag:
         st.warning("Rule-based threshold triggered")
