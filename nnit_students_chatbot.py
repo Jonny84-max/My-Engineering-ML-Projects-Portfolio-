@@ -7,7 +7,6 @@ model = joblib.load("chatbot_model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
 
 # Keyword mapping for intents
-# ---------------------------
 keyword_map = {
     "1st Semester exam": ["1st sem", "first semester", "semester 1", "exam 1"],
     "2nd Semester exam": ["2nd sem", "second semester", "semester 2", "exam 2"],
@@ -91,17 +90,23 @@ def run():
     # User input
     user_input = st.text_input("Type your question here:")    
     if user_input:
-        text = user_input.lower()
-        if "exam" in text:
-            if any(word in text for word in ["2nd", "second", "sem 2", "semester 2"]):
-                intent = "2nd Semester exam"
-            elif any(word in text for word in ["1st", "first", "sem 1", "semester 1"]):
-                intent = "1st Semester exam"
-            else:
-                intent = upcoming_semester
-        else:
-            input_vec = vectorizer.transform([text])
-            intent = model.predict(input_vec)[0]
+    text = user_input.lower()
+    matched_intent = None
 
-        answer = responses.get(intent, "Sorry, I don't have an answer for that yet.")
-        st.write(f"**Bot:** {answer}")
+    # Keyword + fuzzy match
+    for intent_key, keywords in keyword_map.items():
+        for kw in keywords:
+            if kw in text or get_close_matches(text, [kw], cutoff=0.8):
+                matched_intent = intent_key
+                break
+        if matched_intent:
+            break
+
+    # ML fallback
+    if not matched_intent:
+        input_vec = vectorizer.transform([text])
+        matched_intent = model.predict(input_vec)[0]
+
+    # Final answer
+    answer = responses.get(matched_intent, "Hmm, I’m not sure about that yet 🤔. I can help with other things like exams, assignments, library info, registration, or tutoring. would you want assistance in any of these areas.")
+    st.write(f"**Bot:** {answer}")
