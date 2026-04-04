@@ -1,15 +1,3 @@
-import streamlit as st
-
-def run():
-    st.header("NNIT Student Support System")
-    # paste your existing Streamlit code here
-# Chatbot - Student Support System
-# Nigerian Navy Institute of Technology
-# Features:
-#   Dynamic exam schedule (auto yearly update)
-#   Weekday-only exam listing
-#    Countdown to exam start
-
 import datetime
 import streamlit as st
 import joblib
@@ -17,6 +5,9 @@ import joblib
 # Load model and vectorizer
 model = joblib.load("chatbot_model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
+
+def run():
+    st.header("NNIT Student Support System")
 
 # Function to generate exam schedule
 def get_exam_details(month, start_week):
