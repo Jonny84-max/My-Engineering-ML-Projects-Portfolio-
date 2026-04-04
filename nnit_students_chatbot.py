@@ -42,7 +42,6 @@ def format_exam_response(start, end, countdown, show_days, days):
 # Main function to run the app
 def run():
     st.header("NNIT Student Support System")
-    st.title("📚 Nigerian Navy Institute of Technology: Student Support Chatbot")
     st.write("Ask about exams, assignments, library, registration, etc.")
     
     # Determine upcoming semester
