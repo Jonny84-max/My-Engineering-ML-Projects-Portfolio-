@@ -1,5 +1,5 @@
 import streamlit as st
-import NNIT_Students_chatbot    # copy code from NNIT-Students-Support-System
+import NNIT_Students_Chatbot    # copy code from NNIT-Students-Support-System
 import Predictive_maintenance_Marine_Engine  # copy code from NNIT-Students-Support-System
 import hull_biofouling_Prediction    # copy code from NNIT-Students-Support-System
 import User_interactive_chatbot     # copy code from Python_Chatbot
