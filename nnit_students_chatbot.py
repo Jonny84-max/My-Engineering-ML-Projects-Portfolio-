@@ -73,19 +73,35 @@ def run():
     })
 
     # User input
-    user_input = st.text_input("Type your question here:")
+    user_input = st.text_input("Type your question here:")    
     if user_input:
         text = user_input.lower()
-        if "exam" in text:
-            if any(word in text for word in ["2nd", "second", "sem 2", "semester 2"]):
-                intent = "2nd Semester exam"
-            elif any(word in text for word in ["1st", "first", "sem 1", "semester 1"]):
-                intent = "1st Semester exam"
-            else:
-                intent = upcoming_semester
-        else:
-            input_vec = vectorizer.transform([text])
-            intent = model.predict(input_vec)[0]
+        matched_intent = None
+    # Keyword mapping
+    keyword_map = {
+        "1st Semester exam": ["1st sem", "first semester", "semester 1", "exam 1"],
+        "2nd Semester exam": ["2nd sem", "second semester", "semester 2", "exam 2"],
+        "assignment and project deadlines": ["assignment", "project", "deadline", "due"],
+        "library": ["library", "books", "hours", "borrow"],
+        "tutoring": ["tutor", "help", "subject", "session"],
+        "registration": ["register", "registration", "add/drop", "enroll"],
+        "counseling": ["counseling", "advice", "support", "mental"],
+        "attendance_policy": ["attendance", "absent", "class"],
+        "late_submission_policy": ["late submission", "late work", "penalty"],
+        "registrar_contact": ["registrar", "contact", "email", "phone"],
+        "support_contact": ["support", "helpdesk", "office hours"]
+    }
 
-        answer = responses.get(intent, "Sorry, I don't have an answer for that yet.")
-        st.write(f"**Bot:** {answer}")
+    # Keyword matching first
+    for intent, keywords in keyword_map.items():
+        if any(word in text for word in keywords):
+            matched_intent = intent
+            break
+
+    # If no keywords matched, fallback to ML model
+    if not matched_intent:
+        input_vec = vectorizer.transform([text])
+        matched_intent = model.predict(input_vec)[0]
+
+    answer = responses.get(matched_intent, "Sorry, I don't have an answer for that yet.")
+    st.write(f"**Bot:** {answer}")
