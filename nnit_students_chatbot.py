@@ -83,13 +83,15 @@ responses["1st Semester exam"] = format_exam_response(f_start, f_end, f_count, f
 responses["2nd Semester exam"] = format_exam_response(s_start, s_end, s_count, s_show_days, s_days)
 
 # Streamlit interface
-st.title("📚 Nigerian Navy Institute of Technology: Student Support Chatbot")
-st.write("Ask about exams, assignments, library, registration, etc.")
+def run():
+    st.header("NNIT Student Support System")
+    st.title("📚 Nigerian Navy Institute of Technology: Student Support Chatbot")
+    st.write("Ask about exams, assignments, library, registration, etc.")
 
-user_input = st.text_input("Type your question here:")
+    user_input = st.text_input("Type your question here:")
 
-if user_input:
-    text = user_input.lower()
+    if user_input:
+        text = user_input.lower()
     # Simple keyword rule-based detection
     if "exam" in text:
         if any(word in text for word in ["2nd", "second", "sem 2", "semester 2"]):
@@ -99,9 +101,9 @@ if user_input:
         else:
             # Default to upcoming semester
             intent = "1st Semester exam"
-    else:
-        input_vec = vectorizer.transform([text])
-        intent = model.predict(input_vec)[0]
+        else:
+            input_vec = vectorizer.transform([text])
+            intent = model.predict(input_vec)[0]
 
     answer = responses.get(intent, "Sorry, I don't have an answer for that yet.")
     st.write(f"**Bot:** {answer}")
