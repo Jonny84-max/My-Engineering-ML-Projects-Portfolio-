@@ -95,8 +95,8 @@ def plot_risk_bar(score):
 
     st.pyplot(fig)
 
-def run():
 #  Streamlit UI
+def run():
 st.title(" Predictive Maintenance System")
 temp = st.number_input("Temperature", value=80.0)
 vib = st.number_input("Vibration", value=0.5)
