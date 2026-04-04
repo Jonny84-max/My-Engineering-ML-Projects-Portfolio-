@@ -101,9 +101,9 @@ def run():
         else:
             # Default to upcoming semester
             intent = "1st Semester exam"
-        else:
-            input_vec = vectorizer.transform([text])
-            intent = model.predict(input_vec)[0]
+    else:
+        input_vec = vectorizer.transform([text])
+        intent = model.predict(input_vec)[0]
 
     answer = responses.get(intent, "Sorry, I don't have an answer for that yet.")
     st.write(f"**Bot:** {answer}")
