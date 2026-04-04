@@ -99,7 +99,6 @@ def run():
         elif any(word in text for word in ["1st", "first", "sem 1", "semester 1"]):
             intent = "1st Semester exam"
         else:
-            # Default to upcoming semester
             intent = "1st Semester exam"
     else:
         input_vec = vectorizer.transform([text])
