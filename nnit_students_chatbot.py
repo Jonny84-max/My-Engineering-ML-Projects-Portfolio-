@@ -73,15 +73,17 @@ def run():
 
     # Add other info
     responses.update({
-        "assignment and project deadlines": "Assignment and Project Deadlines:\n- Assignment due: May 25, 2026\n- Project due: June 12, 2026",
-        "library": "Library Hours:\n- Weekdays: 8:00 AM – 6:00 PM\n- Weekends: 10:00 AM – 4:00 PM",
-        "tutoring": "Tutoring:\n- Tutoring is free.\n- Available subjects: Math, Physics, CS.\n- Next session: May 20, 2026",
-        "registration": "Registration:\n- Starts: June 1, 2026\n- Ends: June 15, 2026\n- Add/drop: June 2 – June 6, 2026",
-        "counseling": "Counseling:\n- Hours: 8:00 AM – 4:00 PM\n- Days: Mon–Fri\n- Location: Student Affairs Building",
-        "attendance_policy": "Attendance Policy:\n- Minimum attendance: 75%\n- Missing class without excuse affects grade",
-        "late_submission_policy": "Late Submission:\n- Late work loses 5% per day\n- Extensions require approval",
-        "registrar_contact": "Registrar Contact:\n- Email: registrar@university.edu\n- Phone: +234 800 123 4567",
-        "support_contact": "Student Support:\n- Email: support@university.edu\n- Office hours: 8:00 AM – 4:00 PM"
+        "1st Semester exam": f" First Semester Exam Schedule:\n {f_start.strftime('%d %B %Y')} – {f_end.strftime('%d %B %Y')}\n{f_count}\n{f_days}\n Daily start time: 9:00 AM",
+        "2nd Semester exam": f" Second Semester Exam Schedule:\n {s_start.strftime('%d %B %Y')} – {s_end.strftime('%d %B %Y')}\n{s_count}\n{s_days}\n Daily start time: 9:00 AM",
+        "assignment and project deadlines": " Assignment and Project Deadlines:\n- Assignment due: May 25, 2026\n- Project due: June 12, 2026",
+        "library": " Library Hours:\n- Weekdays: 8:00 AM – 6:00 PM\n- Weekends: 10:00 AM – 4:00 PM",
+        "tutoring": " Tutoring:\n- Tutoring is free.\n- Available subjects: Math, Physics, CS.\n- Next session: May 20, 2026",
+        "registration": " Registration:\n- Starts: June 1, 2026\n- Ends: June 15, 2026\n- Add/drop: June 2 – June 6, 2026",
+        "counseling": " Counseling:\n- Hours: 8:00 AM – 4:00 PM\n- Days: Mon–Fri\n- Location: Student Affairs Building",
+        "attendance_policy": " Attendance Policy:\n- Minimum attendance: 75%\n- Missing class without excuse affects grade",
+        "late_submission_policy": " Late Submission:\n- Late work loses 5% per day\n- Extensions require approval",
+        "registrar_contact": " Registrar Contact:\n- Email: registrar@university.edu\n- Phone: +234 800 123 4567",
+        "support_contact": " Student Support:\n- Email: support@university.edu\n- Office hours: 8:00 AM – 4:00 PM"
     })
 
     # User input
